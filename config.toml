@@ -1,8 +1,8 @@
 baseURL = "/"
 languageCode = "en-us"
 DefaultContentLanguage = "en"
-title = "Application Modernization Cookbook"
-copyright = "@2020, Pivotal VMware Software, Inc. All Rights Reserved, Confidential"
+title = "Tanzu Applications Cookbook"
+copyright = "@2021, VMware Software, Inc. All Rights Reserved"
 theme = "hugo-theme-docdock"
 publishDir = "public"
 pygmentsCodeFences = true
@@ -13,7 +13,7 @@ enableGitInfo = true
 [params]
 themeStyle = "original"
 disableHomeIcon = true
-description = "Application Modernization Cookbook"
+description = "Tanzu Applications Cookbook"
 noCategoryLink = true
 showVisitedLinks = false
 noSearch = false
