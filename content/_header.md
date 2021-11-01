@@ -1,4 +1,4 @@
 +++
 hidden = true
 +++
-{{< figure src="/images/VMwarePivotalLabs.png" link="/">}}
+{{< figure src="/images/VMwareTanzuLabsWhite.png" link="/">}}
