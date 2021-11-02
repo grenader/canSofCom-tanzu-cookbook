@@ -44,6 +44,8 @@ jobs:
 
   - task: deploy-to-tas
     file: cookbook-template-repo/ci/tasks/deploy-to-tas.yml
+    params:
+      TAS_PASSCODE: {{tas_passcode}}
 
 #
 #  - put: pws-apptx
