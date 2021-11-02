@@ -10,15 +10,15 @@ resources:
   source:
     uri: {{git_repo_uri}}
     branch: {{git_branch}}
-- name: pws-apptx
-  type: cf
-  source:
-      api: {{cf_api}}
-      organization: {{cf_org}}
-      space: {{cf_space}}
-      username: {{cf-username}}
-      password: {{cf-password}}
-      skip_cert_check: true
+#- name: pws-apptx
+#  type: cf
+#  source:
+#      api: {{cf_api}}
+#      organization: {{cf_org}}
+#      space: {{cf_space}}
+#      username: {{cf-username}}
+#      password: {{cf-password}}
+#      skip_cert_check: true
 
 jobs:
 - name: compile-site
@@ -33,17 +33,21 @@ jobs:
       globs:
       - 'hugo_[0-9]*Linux-64bit.tar.gz'
 
-#  - task: generate-auth
-#    file: cookbook-template-repo/ci/tasks/htpasswd.yml
-#    params:
-#      SITE_USER: {{site_user}}
-#      SITE_PASSWORD: {{site_password}}
-#
+  - task: generate-auth
+    file: cookbook-template-repo/ci/tasks/htpasswd.yml
+    params:
+      SITE_USER: {{site_user}}
+      SITE_PASSWORD: {{site_password}}
+
   - task: compile-site
     file: cookbook-template-repo/ci/tasks/hugo.yml
 
-  - put: pws-apptx
-    params:
-      manifest: compiled-site/manifest.yml
-      path: compiled-site
-      current_app_name: app-transformation-cookbook-template
+  - task: deploy-to-tas
+    file: cookbook-template-repo/ci/tasks/deploy-to-tas.yml
+
+#
+#  - put: pws-apptx
+#    params:
+#      manifest: compiled-site/manifest.yml
+#      path: compiled-site
+#      current_app_name: app-transformation-cookbook-template
